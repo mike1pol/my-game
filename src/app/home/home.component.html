@@ -1,0 +1,21 @@
+<div class="card-container">
+  <h1 class="sample-content">Своя игра</h1>
+  <div *ngIf="!users || users.length < 6">
+    <h4>Новый игрок</h4>
+    <form (ngSubmit)="submitState(newUser)" autocomplete="off">
+      <input
+        [value]="newUser"
+        (input)="newUser = $event.target.value"
+        placeholder="Имя игрока"
+        autofocus>
+      <button md-raised-button color="primary">Добавить</button>
+    </form>
+  </div>
+  <div>
+    <h3>Список игроков</h3>
+    <ul *ngIf="users && users.length > 0">
+      <li *ngFor="let user of users; let i = index">{{user}} <a href="#" (click)="remove($event, i)">X</a></li>
+    </ul>
+    <button *ngIf="users && users.length > 1" (click)="startGame()">Начать игру</button>
+  </div>
+</div>

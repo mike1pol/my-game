@@ -1,0 +1,23 @@
+<div>
+  <div class="questionCard" *ngIf="currentQuestion">
+    {{currentQuestion.question}}<br>
+    за<br>
+    {{currentQuestion.price}}<br>
+    <button *ngIf="currentQuestion.state != 2" (click)="currentQuestion.state = 3">Показать ответ</button>
+    <div *ngIf="currentQuestion.state == 3">
+      {{currentQuestion.answer}}<br>
+      Ответ: <button (click)="closeQuestion(currentQuestion, true)">Верный</button> / <button (click)="closeQuestion(currentQuestion, false)">Ошибочный</button>
+    </div>
+  </div>
+  <div class="game">
+    <div class="row" *ngFor="let theme of themes">
+      <div class="col">{{theme.name}}</div>
+      <div class="col click" *ngFor="let price of prices" (click)="openQuestion(theme, price)">
+        {{questionForPrice(theme, price)}}
+      </div>
+    </div>
+  </div>
+  <div class="users">
+    <div class="user" *ngFor="let user of users" (click)="currentUser = user" [ngClass]="{'currentUser': currentUser && user.name == currentUser.name}">{{user.name}}<br>{{user.money}}</div>
+  </div>
+</div>
