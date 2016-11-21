@@ -1,5 +1,5 @@
-<div class="card-container">
-  <h1 class="sample-content">Своя игра</h1>
+<div class="newGame">
+  <h1>Своя игра</h1>
   <div *ngIf="!users || users.length < 6">
     <h4>Новый игрок</h4>
     <form (ngSubmit)="submitState(newUser)" autocomplete="off">
