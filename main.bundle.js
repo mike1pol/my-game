@@ -304,7 +304,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".questionCard {\n  background: #00228F;\n  position: fixed;\n  top: 0;\n  left: 0;\n  padding-top: 40%;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n}\n.game {\n  display: flex;\n  width: 100%;\n  justify-content: space-around;\n  flex-direction: column;\n}\n.game .row {\n  display: flex;\n  flex-direction: row;\n  color: #fff;\n  border-bottom: 1px solid #fff;\n}\n.game > .row:last-child {\n  border-bottom: 0;\n}\n.game .row > .col {\n  width: 8%;\n  border-right: 1px solid #fff;\n  padding: 40px 0;\n}\n.game .row > .col:hover {\n  background: #004BAC;\n}\n.game .row > .col:first-child {\n  width: 12%;\n  padding-left: 15px;\n}\n.game .row > .col:last-child {\n  border-right: 0;\n}\n.game .row .col.click {\n  text-align: center;\n  cursor: pointer;\n}\n.users {\n  margin-top: 30px;\n  display: flex;\n  width: 100%;\n  justify-content: space-around;\n  flex-direction: row;\n}\n.users .user {\n  cursor: pointer;\n  text-align: center;\n  padding: 20px;\n}\n.users .user:hover {\n  background: #004BAC;\n}\n.users .user.currentUser {\n  border: 1px solid #fff;\n}\n", ""]);
+exports.push([module.i, ".questionCard {\n  background: #00228F;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.questionCard .question {\n  display: flex;\n  flex-flow: column;\n}\n.game {\n  display: flex;\n  width: 100%;\n  justify-content: space-around;\n  flex-direction: column;\n}\n.game .row {\n  display: flex;\n  flex-direction: row;\n  color: #fff;\n  border-bottom: 1px solid #fff;\n}\n.game > .row:last-child {\n  border-bottom: 0;\n}\n.game .row > .col {\n  width: 8%;\n  border-right: 1px solid #fff;\n  padding: 40px 0;\n}\n.game .row > .col:hover {\n  background: #004BAC;\n}\n.game .row > .col:first-child {\n  width: 12%;\n  padding-left: 15px;\n}\n.game .row > .col:last-child {\n  border-right: 0;\n}\n.game .row .col.click {\n  text-align: center;\n  cursor: pointer;\n}\n.users {\n  margin-top: 30px;\n  display: flex;\n  width: 100%;\n  justify-content: space-around;\n  flex-direction: row;\n}\n.users .user {\n  cursor: pointer;\n  text-align: center;\n  padding: 20px;\n}\n.users .user:hover {\n  background: #004BAC;\n}\n.users .user.currentUser {\n  border: 1px solid #fff;\n}\n", ""]);
 
 // exports
 
@@ -319,7 +319,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "/*styles for home content only*/", ""]);
+exports.push([module.i, ".newGame {\n  width: 500px;\n  margin: 50px auto;\n}\n", ""]);
 
 // exports
 
@@ -1063,7 +1063,7 @@ exports.ENV_PROVIDERS = PROVIDERS.slice();
 /***/ "./src/app/game/game.component.html":
 /***/ function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"questionCard\" *ngIf=\"currentQuestion\">\n    {{currentQuestion.question}}<br>\n    за<br>\n    {{currentQuestion.price}}<br>\n    <button *ngIf=\"currentQuestion.state != 2\" (click)=\"currentQuestion.state = 3\">Показать ответ</button>\n    <div *ngIf=\"currentQuestion.state == 3\">\n      {{currentQuestion.answer}}<br>\n      Ответ: <button (click)=\"closeQuestion(currentQuestion, true)\">Верный</button> / <button (click)=\"closeQuestion(currentQuestion, false)\">Ошибочный</button>\n    </div>\n  </div>\n  <div class=\"game\">\n    <div class=\"row\" *ngFor=\"let theme of themes\">\n      <div class=\"col\">{{theme.name}}</div>\n      <div class=\"col click\" *ngFor=\"let price of prices\" (click)=\"openQuestion(theme, price)\">\n        {{questionForPrice(theme, price)}}\n      </div>\n    </div>\n  </div>\n  <div class=\"users\">\n    <div class=\"user\" *ngFor=\"let user of users\" (click)=\"currentUser = user\" [ngClass]=\"{'currentUser': currentUser && user.name == currentUser.name}\">{{user.name}}<br>{{user.money}}</div>\n  </div>\n</div>\n"
+module.exports = "<div>\n  <div class=\"questionCard\" *ngIf=\"currentQuestion\">\n    <div class=\"question\">\n      {{currentQuestion.question}}<br>\n      за<br>\n      {{currentQuestion.price}}<br>\n      <button *ngIf=\"currentQuestion.state != 2\" (click)=\"currentQuestion.state = 3\">Показать ответ</button>\n      <div *ngIf=\"currentQuestion.state == 3\">\n        {{currentQuestion.answer}}<br>\n        Ответ: <button (click)=\"closeQuestion(currentQuestion, true)\">Верный</button> / <button (click)=\"closeQuestion(currentQuestion, false)\">Ошибочный</button>\n      </div>\n    </div>\n  </div>\n  <div class=\"game\">\n    <div class=\"row\" *ngFor=\"let theme of themes\">\n      <div class=\"col\">{{theme.name}}</div>\n      <div class=\"col click\" *ngFor=\"let price of prices\" (click)=\"openQuestion(theme, price)\">\n        {{questionForPrice(theme, price)}}\n      </div>\n    </div>\n  </div>\n  <div class=\"users\">\n    <div class=\"user\" *ngFor=\"let user of users\" (click)=\"currentUser = user\" [ngClass]=\"{'currentUser': currentUser && user.name == currentUser.name}\">{{user.name}}<br>{{user.money}}</div>\n  </div>\n</div>\n"
 
 /***/ },
 
@@ -1075,6 +1075,7 @@ module.exports = "<div>\n  <div class=\"questionCard\" *ngIf=\"currentQuestion\"
 var core_1 = __webpack_require__("./node_modules/@angular/core/index.js");
 var angular_2_local_storage_1 = __webpack_require__("./node_modules/angular-2-local-storage/dist/angular-2-local-storage.js");
 var app_service_1 = __webpack_require__("./src/app/app.service.ts");
+var questions_1 = __webpack_require__("./src/app/game/questions.ts");
 var themeQuestionsState;
 (function (themeQuestionsState) {
     themeQuestionsState[themeQuestionsState["ready"] = 0] = "ready";
@@ -1104,26 +1105,26 @@ var GameComponent = (function () {
         ];
         this.currentQuestion = null;
         this.currentUser = null;
-        this.themes = [];
-        for (var i = 0; i < 5; i++) {
-            var theme = {
-                name: "Test " + i,
-                questions: []
-            };
-            for (var q = 0; q < 12; q++) {
-                var price = 100 * q;
-                if (q == 11) {
-                    price = 1000000;
-                }
-                theme.questions.push({
-                    price: price,
-                    question: "Question " + q,
-                    answer: "Answer " + q,
-                    state: themeQuestionsState.ready
-                });
-            }
-            this.themes.push(theme);
-        }
+        this.themes = questions_1.questions;
+        // for (let i = 0; i < 5; i++) {
+        //   const theme: theme = {
+        //     name: `Test ${i}`,
+        //     questions: []
+        //   }
+        //   for (let q = 0; q < 12; q++) {
+        //     let price = 100 * q;
+        //     if (q == 11) {
+        //       price = 1000000;
+        //     }
+        //     theme.questions.push({
+        //       price,
+        //       question: `Question ${q}`,
+        //       answer: `Answer ${q}`,
+        //       state: themeQuestionsState.ready
+        //     })
+        //   }
+        //   this.themes.push(theme);
+        // }
         var users = this.storage.get('users');
         if (users && users.users) {
             users.users.forEach(function (v) {
@@ -1203,6 +1204,869 @@ __export(__webpack_require__("./src/app/game/game.component.ts"));
 
 /***/ },
 
+/***/ "./src/app/game/questions.ts":
+/***/ function(module, exports) {
+
+"use strict";
+"use strict";
+exports.questions = [
+    {
+        "name": "SPb Python Interest Group",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Кто автор ЯП Python?",
+                "answer": "Guido van Rossum",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "Сколько раз в месяц проходят митапы SPb Python Interest Group?",
+                "answer": "2 раза",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "Начиная с какой версии Python для исходного кода по умолчанию используется кодировка UTF-8?",
+                "answer": "Python 3",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Сколько пробелов принято использовать для отступа в Python?",
+                "answer": "4 (четыре)",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "Назовите аналог null в Python.",
+                "answer": "None",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "Что выведет этот код: \"print(2 ^ 2)\"?",
+                "answer": "0 (ноль)",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Что в CPython обеспечивает синхронизацию потоков?",
+                "answer": "GIL - Global Interpretator Lock",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "Как называются документы описывающие развитие ЯП Python?",
+                "answer": "PEP - Python Enhancement Proposal",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "В честь чего Python получил своё название?",
+                "answer": "Группа комедиантов \"Monty Python\"",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Кто владеет логотипом ЯП Python?",
+                "answer": "Python Software Foundation",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "Когда в Python появятся нормальные лямбды?",
+                "answer": "На данный вопрос нет ответа",
+                "state": 0
+            }
+        ]
+    },
+    {
+        "name": "FPROG",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Кто автор языка Common Lisp?",
+                "answer": "комитет ANSI X3J13",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "",
+                "answer": "",
+                "state": 3
+            },
+            {
+                "price": 300,
+                "question": "Назовите три диалекта лиспа",
+                "answer": "Common Lisp, Clojure, Scheme/Racket, Emacs Lisp, New Lisp, Lisp Flavoured Erlang",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Назовите известного лиспера",
+                "answer": "Брендан Эйх (автор JavaScript) Джо Армстронг (автор Erlang) Йокихиро Мацумото (автор Ruby) Ларри Уол (автор Perl) Алан Кей (автор Smalltalk) Джон МакКарти (автор лиспа)",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "В чем состоит главная идея лиспа?",
+                "answer": "Код = данные",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "На чём был написан первый интерпретатор Erlang?",
+                "answer": "Пролог",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Что в Common Lisp не позволяет иметь продолжения?",
+                "answer": "Специальная форма unwind-protect",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "",
+                "answer": "",
+                "state": 3
+            },
+            {
+                "price": 900,
+                "question": "В честь чего названа фунция cdr в лиспе?",
+                "answer": "Команда процессоров IBM: Copy Decrement Register",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "",
+                "answer": "",
+                "state": 3
+            },
+            {
+                "price": 1000000,
+                "question": "Когда на Common Lisp можно будет найти работу за деньги?",
+                "answer": "Уже сейчас (crossover.com нанимает)",
+                "state": 0
+            }
+        ]
+    },
+    {
+        "name": "PiterJS",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Кто автор ECMAScript",
+                "answer": "Брендан Эйх",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "Какая последняя версия ECMAScript",
+                "answer": "ES2016",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "В каком году был придуман JavaScript",
+                "answer": "1995",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Что получится, если сложить true + false?",
+                "answer": "1 (один)",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "Что делает оператор ===?",
+                "answer": "Сравнивает без приведения типа",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "Есть ли разница между вызовами i++ и ++i?",
+                "answer": "Операция пост-инкремента(i++) возвращает значение переменной i до выполнения этого инкремента. Операция префикс-инкремента (++i) возвращает значение уже измененной переменной.",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Чему равно i в конце кода? for(var i=0; i<10; i++) { console.log(i); }",
+                "answer": "10 (десять)",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "Верно ли что null == undefined",
+                "answer": "Да",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "Верно ли сравнение: \"ёжик\" > \"яблоко\"?",
+                "answer": "да",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Чему равна сумма [] + 1 + 2",
+                "answer": "12",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "Каков будет результат? null + {0:1}[0] + [,[1],][1][0]",
+                "answer": "2",
+                "state": 0
+            }
+        ]
+    },
+    {
+        "name": "SPb .Net Community",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Как называется C# и VB компилятор написаный на C#",
+                "answer": "Roslyn",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "В каком году вышла первая версия .NET Framework?",
+                "answer": "2002",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "Где была собрана первая встреча сообщества SpbDotNet",
+                "answer": "На ITGM",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "В каком году Microsoft купил Xamarin",
+                "answer": "2016",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "Как, с точки зрения музыкально-образованного читателя, произнисится надпись \"C#\"?",
+                "answer": "До-Диез",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "В какой версии языка появился LINQ?",
+                "answer": "3.0 (2008 год)",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Назовите человека в красном поло",
+                "answer": "Скотт Гатри",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "Назовите автора языка C#, а так же Turbo Pascal, Delphi, TypeScript.",
+                "answer": "Аннерс Хейлсберг",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "Назовите хоть один язык, основанный на DLR, но не IronPython и не IronRuby",
+                "answer": "PowerShell, Clojure CLR, IronScheme, IronLisp, IronJS, Boo",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Из какого языка черпает свою идеология F#",
+                "answer": "OCaml",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "Как называлась Питерская .NET группа до SpbDotNet, которую вёл Дмитрий Нестерук",
+                "answer": "SpbAlt.Net",
+                "state": 0
+            }
+        ]
+    },
+    {
+        "name": "SPb GO Community",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Табы или пробелы?",
+                "answer": "Табы",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "Ошибки это?",
+                "answer": "Значения",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "Последняя версия Go?",
+                "answer": "1.7.3",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Сколько лет языку Go?",
+                "answer": "7",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "Назовите трех авторов и проектировщиков первых версий языка Go?",
+                "answer": "Роберт Гризмер, Роб Пайк и Кен Томпсон",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "На каком порту по умаолчанию запускается pprof?",
+                "answer": "6060",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Какой самый известный инструмент для контейнеризации написан на Go?",
+                "answer": "Docker",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "С помощью какого инструмента можно использовать C в Go программах?",
+                "answer": "cgo",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "Что делает код<br>a := 1<br>_ = a",
+                "answer": "Присваивает значение пустому идентификатору",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Как зовут автора логотипа Go?",
+                "answer": "Renee French",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "",
+                "answer": "",
+                "state": 3
+            }
+        ]
+    },
+    {
+        "name": "SPb Community of Analysts",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Нормальные люди приходят к другим за ответами, а аналитики...",
+                "answer": "За требованиями",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "У каких аналитиков есть свой профессиональный стандарт в РФ? ",
+                "answer": "У системных",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "Какой ГОСТ определяет стандарт на техническое задание?",
+                "answer": "ГОСТ 34.602-89 «Техническое задание на создание автоматизированной системы»",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Аналог Кнута и Страуструпа для российских аналитиков?",
+                "answer": "Карл Вигерс",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "SWEBоK и SEBoK - в чем разница? ",
+                "answer": "SWEBoK (Software Engineering Body of Knowledge) - Свод знаний по разработке ПО. SEBoK (Guide to the Systems Engineering Body of Knowledge) - Свод знаний по системной инженерии.",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "Чем отличается таксономия от глоссария?",
+                "answer": "Иерархией",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Сколько почему?",
+                "answer": "5 WHY",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "RACI матрица, эта аббревиатура разбивается на четыре конкретных роли. Назовите каждую из них.",
+                "answer": "Responsible (на матрице отмечается буквой R) – ответственный непосредственно за выполнение работы. Accountable (A) – подотчетный, такую роль может занимать только один человек на одной задаче. Consulted (C) – один сотрудник или группа, с которыми проводятся консультации касательно задачи и мнения которых должно учитываться. Informed (I) – сотрудники, уведомляемые о выполнении конкретной задачи",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "Сколько аналитиков нужно, чтобы написать Hello world?",
+                "answer": "Ни одного. аналитики не пишут код",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Мама старше своего сына на 21 год. Через шесть лет она будет старше его в пять раз. Вопрос: ГДЕ ПАПА?????",
+                "answer": "решая 2 простых уравнения получаем что сыну -3/4 года, т.е -9 месяцев! вывод: папа сейчас с будущей мамой занимаются зачатием будущего сына!!!",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "Человек прошел 1 км на юг, 1 км на восток и 1 км на север, после чего оказался в том же месте, откуда вышел. Где может быть это место?",
+                "answer": "1. На северном полюсе. 2. на таком расстоянии от южного полюса, что километром южнее длина окружности соответствующего меридиана составляет 1 км. 3. На таком расстоянии от южного полюса, что километром южнее длина окружности соответствующего меридиана укладывается в в километр целое число раз",
+                "state": 3
+            }
+        ]
+    },
+    {
+        "name": "UX SPb",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Кто написал книгу про проектирование, ориентированное на пользователей, и назвал ее в честь невполне здоровых людей?",
+                "answer": "(Алан) Купер",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "\"Коридорное тестирование\" это?",
+                "answer": "Быстрая демонстрация прототипа решения случайно встреченному (в коридоре) человеку и оценка его реакции",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "Чем научное наблюдение в ходе исследования пользователей отличается от простого рассматривания?",
+                "answer": "Ведением протокола наблюдений",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Чьим именем назван закон, связывающий время перемещения с требуемой точностью и дальностью движения?",
+                "answer": "Закон Фиттса (Пол Фиттс)",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "",
+                "answer": "",
+                "state": 3
+            },
+            {
+                "price": 600,
+                "question": "",
+                "answer": "",
+                "state": 3
+            },
+            {
+                "price": 700,
+                "question": "Что описывается в \"гайдлайнах\" интерфейсов операционных систем, кроме требований по визуальному оформлению?",
+                "answer": "Назначение элементов интерфейса, правила их применения и, иногда, процесс проектирования",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "В каком году введен в действие ГОСТ, описывающий процесс человеко-ориентированного проектирования интерактивных систем?",
+                "answer": "2012",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "К какой области психологии стоит обратиться, рассматривая вопросы взаимного расположения и понятной группировки элементов интерфейса?",
+                "answer": "Гештальтпсихология",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Концепция современных графических интерфейсов была представлена Дугласом Энгельбартом в видеопрезентации, получившей собственное имя \"Мать всех демонстраций\". Случилось это до появления MacOS или Windows. В каком году?",
+                "answer": "1968",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "",
+                "answer": "",
+                "state": 3
+            }
+        ]
+    },
+    {
+        "name": "SPb IT HR",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Кто, по мнению wikipedia, ошибочно перевел термин Employer branding?  После этого ошибочного перевода в России это явление получило название HR branding",
+                "answer": "Компания HeadHanter",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "эта международная IT HR конференция в Петербурге проводилась уже в 10 раз",
+                "answer": "«нАйТи ответ!»",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "этот сайт многие годы традиционно считается самым популярным ресурсом для поиска IT работы в США",
+                "answer": "Monster.com",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "В англоязычной шутке один линукс-программист зашел в бар, заказал еду и попросил ЕЕ. После чего уже два линукс-программиста наслаждались едой. Назовите ЕЕ.",
+                "answer": "Вилка (fork)",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "в наиболее уважаемых бизнес-школах мира этот тест используется как один из критериев отбора заявлений",
+                "answer": "GMAT",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "как правило IT старт-апы относятся именно к этому уровню по Спиральной динамике ",
+                "answer": "оранжевый",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "один из самых влиятельных теоретиков менеджмента XX века сказал \"The best way to predict the future is to create it\"",
+                "answer": "Питер Дрюкер",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "Автор вопроса назвал город Менло-Парк в районе Силиконовой долины — Дамас. Какие два слова мы заменили словом \"Дамас\"?",
+                "answer": "Столица Siri./Комментарий: В Менло-Парк находится Стэнфордский исследовательский институт (SRI International), разработавший технологии, которые легли в основу помощника Siri. Дамаск — столица Сирии.",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "на этом ресурсе одной из задач службы персонала называется \"Принятие решений о судьбе менеджеров, не справляющихся со своими задачами.\"",
+                "answer": "Wikipedia https://ru.wikipedia.org/wiki/%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D0%BE%D0%BC",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Если температура воздуха в помещении вышего чем это значение, то  работу следует прекратить.",
+                "answer": "33. Если температура воздуха выше всего на полградуса, то есть равна 28,5 градуса, можно работать 7 часов, 29 градусов - 6 часов и так далее. Если в помещении 32,5 градуса, рабочий день сокращается до 1 часа. Если температура равна 33 градусам, работу следует прекратить",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "руководителям платят именно за эти 4 базовые функции",
+                "answer": "планирование, организация, мотивация, контроль",
+                "state": 0
+            }
+        ]
+    },
+    {
+        "name": "SPb SQA Group",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Что такое баг?",
+                "answer": "Расхождение между ожидаемый результатам и действительным",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "К кому идут тестировщик и разработчик если у них возник спор \"Это баг или фича\"?",
+                "answer": "К аналитику или владельцу продукта",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "Сколько уровеней в сертификации ISTQB?",
+                "answer": "Три",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Какой фреймворк для тестирования на основе Selenium Web Driver разрабатывают ребята из Codeborn?",
+                "answer": "Selenide",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "Что означает абривиатура SDET?",
+                "answer": "Software Development Engineer in Test",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "В каком стандарте описаны характеристики качества ПО?",
+                "answer": "ISO 25010 (пришёл на замену ISO 9126)",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Зачем проводят объёмное тестирование (Volume Testing)?",
+                "answer": "Задачей объемного тестирования является получение оценки производительности при увеличении объемов данных в базе данных приложения",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "Какой самым полулярный инструмент для ведения тест-кейсов на территории СНГ?",
+                "answer": "Excel, Google таблицы",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "Какой вопрос нужно задать первым при создании тестовой статегии?",
+                "answer": "Что наиболее важное в продукте?",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Почему люки круглой формы?",
+                "answer": "Люки бывают любой формы, не обязательно круглой.",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "Кто был официально первым тестировщиком?",
+                "answer": "Jerry Wainberg",
+                "state": 0
+            }
+        ]
+    },
+    {
+        "name": "SPb Open Data",
+        "questions": [
+            {
+                "price": 100,
+                "question": "По какому адресу можно найти российский федеральный портал открытых данных?",
+                "answer": "data.gov.ru",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "Как называется организация, создавшая мировую экспертную сеть по открытыми данным?",
+                "answer": "Open Data Institute",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "Как называется самая популярная платформа управления открытыми данными?",
+                "answer": "CKAN",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Кто стал знаковой фигурой в Open Data Movement в 2009 году?",
+                "answer": "Сэр Тим Бернерс-Ли",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "Порталы открытых данных каких двух стран занимают лидирующее положение с начала их открытия?",
+                "answer": "Порталы США и Великобритании",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "Какой формат представления данных ненавидят почти все, кто работает с открытыми данными? ",
+                "answer": "PDF",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Какой формат представления данных является самым технически продвинутым в соответствии с моделью открытости данных?",
+                "answer": "RDF",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "Какое российское министерство разработало Концепцию открытых данных?",
+                "answer": "Минэкономразвития РФ",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "Какой формат данных известный активист открытых данных Фридрих Линденберг назвал \"автоматом Калашникова\"?",
+                "answer": "CSV",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "В какой организации были разработаны (и разрабатываются) основные спецификации на открытые данные?",
+                "answer": "W3C",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "Когда откроют все данные?",
+                "answer": "На данный вопрос нет ответа",
+                "state": 0
+            }
+        ]
+    },
+    {
+        "name": "Embedded Systems",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Закон Ома",
+                "answer": "I=U/R",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "В чем измеряется индукция, а в чем индуктивность. (Единицы СИ)",
+                "answer": "Тесла (Тл), Генри (Гн)",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "Сколько диодов используется в диодном мосте",
+                "answer": "4",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Расшифруйте аббревиатуру MISRA",
+                "answer": "Motor Industry Software Reliability Association",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "положительная обратная связь используется в генераторах или усилителях",
+                "answer": "генераторах",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "Примерное количество транзисторов в известном контроллере Intel 8051",
+                "answer": "60 000",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Максимальный размер Flash памяти в микроконтроллерах AtMega",
+                "answer": "256 KB",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "Кто купил mentor graphics в 2016 году",
+                "answer": "Siemens",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "Кто купил ARM в 2016 году",
+                "answer": "SoftBank",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Изменением какого параметра обеспечивается стабилизация выходного напряжения в резонансных преобразователях",
+                "answer": "изменение частоты коммутации",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "При условии, что задан один источник тактирования. Какие проблемы с временными задержками нельзя решить, уменьшив тактовую частоту?",
+                "answer": "невыполнение ограничений по времени удержания (оно же hold time или hold slack слэк, слак)",
+                "state": 0
+            }
+        ]
+    },
+    {
+        "name": "SPb R user group",
+        "questions": [
+            {
+                "price": 100,
+                "question": "Какой из этих языков программирования используется в основном для анализа данных и статистического моделирования? C, F, R, T",
+                "answer": "R",
+                "state": 0
+            },
+            {
+                "price": 200,
+                "question": "Язык R компилируемый или интерпретируемый?",
+                "answer": "Интерпретируемый",
+                "state": 0
+            },
+            {
+                "price": 300,
+                "question": "В языке R для векторов и списков индекс первого элемента -- это ...?",
+                "answer": "Единица (не ноль!)",
+                "state": 0
+            },
+            {
+                "price": 400,
+                "question": "Какого из операторов присваивания нет в языке R? Знак равенства, стрелка вверх, стрелка влево, стрелка вправо.",
+                "answer": "Стрелка вверх",
+                "state": 0
+            },
+            {
+                "price": 500,
+                "question": "Как называется самая популярная IDE для языка R?",
+                "answer": "Rstudio",
+                "state": 0
+            },
+            {
+                "price": 600,
+                "question": "Под какой свободной лицензией распространяется язык R?",
+                "answer": "GNU GPL v2 (достаточно назвать GPL2)",
+                "state": 0
+            },
+            {
+                "price": 700,
+                "question": "Как называются модули-расширения для языка R, доступные из центрального репозитория или гитхаба?",
+                "answer": "Пакеты (не библиотеки!)",
+                "state": 0
+            },
+            {
+                "price": 800,
+                "question": "Что делает в языке R функция lm?",
+                "answer": "Считает линейную регрессию",
+                "state": 0
+            },
+            {
+                "price": 900,
+                "question": "Каков результат вызова функции length(\"ITGM9\")?",
+                "answer": "1",
+                "state": 0
+            },
+            {
+                "price": 1000,
+                "question": "Если переменная l -- это непустой список, то в чём разница между вызовами l[1] и l[[1]]?",
+                "answer": "l[1] -- это подсписок из одного элемента, а l[[1]] -- собственно первый элемент.  ",
+                "state": 0
+            },
+            {
+                "price": 1000000,
+                "question": "Название языка R имеет двоякое происхождение. С одной стороны, это первая буква имён создателей -- Росса Ихаки и Роберта Джентльмена. В то же время это отсылка к другому языку программирования, основная область применения которого, как и у R, -- статистический анализ данных. Как называется этот язык-прародитель?",
+                "answer": "S",
+                "state": 0
+            }
+        ]
+    }
+];
+
+
+/***/ },
+
 /***/ "./src/app/home/home.component.css":
 /***/ function(module, exports, __webpack_require__) {
 
@@ -1221,7 +2085,7 @@ __export(__webpack_require__("./src/app/game/game.component.ts"));
 /***/ "./src/app/home/home.component.html":
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"card-container\">\n  <h1 class=\"sample-content\">Своя игра</h1>\n  <div *ngIf=\"!users || users.length < 6\">\n    <h4>Новый игрок</h4>\n    <form (ngSubmit)=\"submitState(newUser)\" autocomplete=\"off\">\n      <input\n        [value]=\"newUser\"\n        (input)=\"newUser = $event.target.value\"\n        placeholder=\"Имя игрока\"\n        autofocus>\n      <button md-raised-button color=\"primary\">Добавить</button>\n    </form>\n  </div>\n  <div>\n    <h3>Список игроков</h3>\n    <ul *ngIf=\"users && users.length > 0\">\n      <li *ngFor=\"let user of users; let i = index\">{{user}} <a href=\"#\" (click)=\"remove($event, i)\">X</a></li>\n    </ul>\n    <button *ngIf=\"users && users.length > 1\" (click)=\"startGame()\">Начать игру</button>\n  </div>\n</div>\n"
+module.exports = "<div class=\"newGame\">\n  <h1>Своя игра</h1>\n  <div *ngIf=\"!users || users.length < 6\">\n    <h4>Новый игрок</h4>\n    <form (ngSubmit)=\"submitState(newUser)\" autocomplete=\"off\">\n      <input\n        [value]=\"newUser\"\n        (input)=\"newUser = $event.target.value\"\n        placeholder=\"Имя игрока\"\n        autofocus>\n      <button md-raised-button color=\"primary\">Добавить</button>\n    </form>\n  </div>\n  <div>\n    <h3>Список игроков</h3>\n    <ul *ngIf=\"users && users.length > 0\">\n      <li *ngFor=\"let user of users; let i = index\">{{user}} <a href=\"#\" (click)=\"remove($event, i)\">X</a></li>\n    </ul>\n    <button *ngIf=\"users && users.length > 1\" (click)=\"startGame()\">Начать игру</button>\n  </div>\n</div>\n"
 
 /***/ },
 
