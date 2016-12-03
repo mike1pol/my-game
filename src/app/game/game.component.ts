@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { AppState } from '../app.service';
-
+import { questions } from './questions';
 interface user {
   name: string;
   money: number;
@@ -51,31 +51,31 @@ export class GameComponent {
   public currentQuestion: themeQuestions = null;
   public currentUser: user = null;
 
-  public themes: theme[] = [];
+  public themes: theme[] = questions;
 
   constructor(
     public appState: AppState,
     public storage: LocalStorageService
   ) {
-    for (let i = 0; i < 5; i++) {
-      const theme: theme = {
-        name: `Test ${i}`,
-        questions: []
-      }
-      for (let q = 0; q < 12; q++) {
-        let price = 100 * q;
-        if (q == 11) {
-          price = 1000000;
-        }
-        theme.questions.push({
-          price,
-          question: `Question ${q}`,
-          answer: `Answer ${q}`,
-          state: themeQuestionsState.ready
-        })
-      }
-      this.themes.push(theme);
-    }
+    // for (let i = 0; i < 5; i++) {
+    //   const theme: theme = {
+    //     name: `Test ${i}`,
+    //     questions: []
+    //   }
+    //   for (let q = 0; q < 12; q++) {
+    //     let price = 100 * q;
+    //     if (q == 11) {
+    //       price = 1000000;
+    //     }
+    //     theme.questions.push({
+    //       price,
+    //       question: `Question ${q}`,
+    //       answer: `Answer ${q}`,
+    //       state: themeQuestionsState.ready
+    //     })
+    //   }
+    //   this.themes.push(theme);
+    // }
     let users: any = this.storage.get('users');
     if (users && users.users) {
       users.users.forEach(v => {

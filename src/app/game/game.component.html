@@ -1,12 +1,14 @@
 <div>
   <div class="questionCard" *ngIf="currentQuestion">
-    {{currentQuestion.question}}<br>
-    за<br>
-    {{currentQuestion.price}}<br>
-    <button *ngIf="currentQuestion.state != 2" (click)="currentQuestion.state = 3">Показать ответ</button>
-    <div *ngIf="currentQuestion.state == 3">
-      {{currentQuestion.answer}}<br>
-      Ответ: <button (click)="closeQuestion(currentQuestion, true)">Верный</button> / <button (click)="closeQuestion(currentQuestion, false)">Ошибочный</button>
+    <div class="question">
+      {{currentQuestion.question}}<br>
+      за<br>
+      {{currentQuestion.price}}<br>
+      <button *ngIf="currentQuestion.state != 2" (click)="currentQuestion.state = 3">Показать ответ</button>
+      <div *ngIf="currentQuestion.state == 3">
+        {{currentQuestion.answer}}<br>
+        Ответ: <button (click)="closeQuestion(currentQuestion, true)">Верный</button> / <button (click)="closeQuestion(currentQuestion, false)">Ошибочный</button>
+      </div>
     </div>
   </div>
   <div class="game">
